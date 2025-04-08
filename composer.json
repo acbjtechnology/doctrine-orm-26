@@ -1,9 +1,9 @@
 {
-    "name": "doctrine/orm",
+    "name": "acbjtechnology/doctrine-orm-26",
     "type": "library",
     "description": "Object-Relational-Mapper for PHP",
     "keywords": ["orm", "database"],
-    "homepage": "http://www.doctrine-project.org",
+    "homepage": "https://github.com/acbjtechnology/doctrine-orm-26",
     "license": "MIT",
     "authors": [
         {"name": "Guilherme Blanco", "email": "guilhermeblanco@gmail.com"},
@@ -16,18 +16,17 @@
         "sort-packages": true
     },
     "require": {
-        "php": "^7.1",
+        "php": ">=7.3",
         "ext-pdo": "*",
         "doctrine/annotations": "~1.5",
         "doctrine/cache": "~1.6",
         "doctrine/collections": "^1.4",
         "doctrine/common": "^2.7.1",
-        "doctrine/dbal": "^2.6",
+        "acbjtechnology/doctrine-dbal-26": "@dev",
         "doctrine/instantiator": "~1.1",
         "symfony/console": "~3.0|~4.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^5.0",
         "phpunit/phpunit": "^7.5",
         "symfony/yaml": "~3.4|~4.0"
     },
@@ -46,10 +45,30 @@
     "bin": ["bin/doctrine"],
     "extra": {
         "branch-alias": {
-            "dev-master": "2.6.x-dev"
+            "dev-master": "main",
+            "dev-develop": "26-6-1-dev"
         }
     },
     "archive": {
         "exclude": ["!vendor", "tests", "*phpunit.xml", ".travis.yml", "build.xml", "build.properties", "composer.phar", "vendor/satooshi", "lib/vendor", "*.swp"]
-    }
+    },
+    "repositories" : [
+        {
+            "type":"package",
+            "package": {
+                "name": "acbjtechnology/doctrine-dbal-26",
+                "version":"dev-main",
+                "source": {
+                    "url": "https://github.com/acbjtechnology/doctrine-dbal-26.git",
+                    "type": "git",
+                    "reference":"main"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Doctrine\\DBAL\\": "lib/"
+                    }
+                }
+            }
+        }
+    ]
 }
